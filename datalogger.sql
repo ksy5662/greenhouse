@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- 테이블 구조 `datalogger`
 --
 
-CREATE TABLE IF NOT EXISTS `datalogger` (
+CREATE TABLE IF NOT EXISTS `mollier` (
   `date_time` datetime DEFAULT NULL,
   `dryTemp` text CHARACTER SET utf8,
   `wetTemp` text,
