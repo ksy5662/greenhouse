@@ -71,6 +71,34 @@ function readSensor($sensor)
 	$q = "INSERT INTO mollier VALUES (now(), '$tempdry', '$tempwet', '$hrString','$haString','$dewString','$hdString')"; 
 	mysql_query($q); 
 	mysql_close($db); 
+	
+	$url = 'https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA';
+$fields = array(
+	urlencode('건구온도') => $tempdry,
+	urlencode('습구온도') => $tempwet,
+	urlencode('상대습도') => $hrString,
+	urlencode('절대습도') => $haString,
+	urlencode('이슬점온도') => $dewString,
+	urlencode('수분부족량') => $hdString,
+);
+
+//url-ify the data for the POST
+foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+rtrim($fields_string, '&');
+
+//open connection
+$ch = curl_init();
+
+//set the url, number of POST vars, POST data
+curl_setopt($ch,CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+//execute post
+$result = curl_exec($ch);
+
+//close connection
+curl_close($ch);
 	}
 
 	return; 
