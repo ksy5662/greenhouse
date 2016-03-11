@@ -73,20 +73,7 @@ function readSensor($sensor)
 	mysql_close($db); 
 	
 	
-	exec('curl -i -H "Accept: application/json" \
-  -H "Content-Type: application/json" \
-  -d '{"values":
-    [{
-      "key": "건구온도",
-      "value": '$tempdry'
-    },
-    {
-      "key": "습구온도",
-      "value": '$tempwet'
-    }
-    ]
-  }' \
-  -X POST "https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA" -k', $output22, $return_var22); 
+	exec('curl -i -H "Accept: application/json" -H "Content-Type: application/json" -d '{"values":[{"key": "건구온도","value": '$tempdry'},{"key": "습구온도","value": '$tempwet'}]}' -X POST "https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA" -k', $output22, $return_var22); 
   
 	/*
 	$url = 'https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA';
