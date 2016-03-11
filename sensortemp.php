@@ -72,6 +72,22 @@ function readSensor($sensor)
 	mysql_query($q); 
 	mysql_close($db); 
 	
+	
+	exec('curl -i -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d '{"values":
+    [{
+      "key": "건구온도",
+      "value": '$tempdry'
+    },
+    {
+      "key": "습구온도",
+      "value": '$tempwet'
+    }
+    ]
+  }' \
+  -X POST "https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA" -k', $output22, $return_var22); 
+	/*
 	$url = 'https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA';
 $fields = array(
 	urlencode('건구온도') => $tempdry,
@@ -96,6 +112,7 @@ curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
 
 //execute post
 $result = curl_exec($ch);
+*/
 
 //close connection
 curl_close($ch);
