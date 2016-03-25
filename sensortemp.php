@@ -73,19 +73,25 @@ function readSensor($sensor)
 	mysql_close($db); 
 	
 	
-	exec('curl -i -H "Accept: application/json" -H "Content-Type: application/json" -d '{"values":[{"key": "건구온도","value": '$tempdry'},{"key": "습구온도","value": '$tempwet'}]}' -X POST "https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA" -k', $output22, $return_var22); 
+	//exec(escapeshellarg('curl -i -H "Accept: application/json" -H "Content-Type: application/json" -d '{"values":[{"key": "건구온도","value": '$tempdry'},{"key": "습구온도","value": '$tempwet'}]}' -X POST "https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA" -k)', $output22, $return_var22); 
   
 	/*
 	$url = 'https://api.thethings.io/v2/things/e5liLasnnRcHcaH6LUfKAWizB7w5PmecXtbLEiVUrmA';
 $fields = array(
-	urlencode('건구온도') => $tempdry,
-	urlencode('습구온도') => $tempwet,
-	urlencode('상대습도') => $hrString,
-	urlencode('절대습도') => $haString,
-	urlencode('이슬점온도') => $dewString,
-	urlencode('수분부족량') => $hdString,
+	//urlencode('건구온도') => $tempdry,
+	//urlencode('습구온도') => $tempwet,
+	//urlencode('상대습도') => $hrString,
+	//urlencode('절대습도') => $haString,
+	//urlencode('이슬점온도') => $dewString,
+	//urlencode('수분부족량') => $hdString,
+	'건구온도' => $tempdry,
+	'습구온도' => $tempwet,
+	'상대습도' => $hrString,
+	'절대습도' => $haString,
+	'이슬점온도' => $dewString,
+	'수분부족량' => $hdString,
 );
-
+$fields_string='';
 //url-ify the data for the POST
 foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
 rtrim($fields_string, '&');
@@ -98,12 +104,15 @@ curl_setopt($ch,CURLOPT_URL, $url);
 curl_setopt($ch,CURLOPT_POST, count($fields));
 curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
 
+print("\n{$fields_string}");
+print("\n{$url}");
 //execute post
 $result = curl_exec($ch);
-*/
+
 
 //close connection
 curl_close($ch);
+*/
 	}
 
 	return; 
