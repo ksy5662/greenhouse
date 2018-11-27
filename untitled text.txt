@@ -1,0 +1,56 @@
+public class WeatherNowState
+{
+  public static final int CLOUD_LITTLE = 1;
+  public static final int CLOUD_MANY = 2;
+  public static final int CLOUD_ONLY = 3;
+  public static final int FOG = 9;
+  public static final int RAIN = 4;
+  public static final int SERENITY = 0;
+  public static final int SHOWER = 6;
+  public static final int SLEET = 7;
+  public static final int SMOKE_AND_FOG = 11;
+  public static final int SNOW = 5;
+  public static final int THIN_MIST = 12;
+  public static final int THUNDER = 8;
+  public static final int YELLOW_DUST = 10;
+  
+  public static int getType(String paramString)
+  {
+    int i = 1;
+    if (paramString == null) {
+      return 1;
+    }
+    if ("������".equals(paramString)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      return i;
+      if ((paramString.contains("������")) && (paramString.contains("������"))) {
+        i = 1;
+      } else if ((paramString.contains("������")) && (paramString.contains("������"))) {
+        i = 2;
+      } else if ("������".equals(paramString)) {
+        i = 3;
+      } else if ("������".equals(paramString)) {
+        i = 11;
+      } else if ("������".equals(paramString)) {
+        i = 12;
+      } else if (("������������".equals(paramString)) || ((paramString.contains("���")) && (paramString.contains("���")))) {
+        i = 7;
+      } else if ("���������".equals(paramString)) {
+        i = 6;
+      } else if ("���".equals(paramString)) {
+        i = 4;
+      } else if ("���".equals(paramString)) {
+        i = 5;
+      } else if ("������������".equals(paramString)) {
+        i = 8;
+      } else if ("������".equals(paramString)) {
+        i = 9;
+      } else if ("������".equals(paramString)) {
+        i = 10;
+      }
+    }
+  }
+}
